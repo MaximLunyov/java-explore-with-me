@@ -11,7 +11,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>stats-server</artifactId>
+    <artifactId>stats-service</artifactId>
 
     <properties>
         <org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
