@@ -34,14 +34,14 @@ public class StatServiceImpl implements StatService {
     public void hit(String uri, String ip) {
         HitDto hit = buildHit(uri, ip);
         log.info("Добавлен Hit {}", hit);
-        statClient.addStats(hit);
+        statClient.saveHit(hit);
     }
 
     private HitDto buildHit(String uri, String ip) {
         return HitDto.builder()
                 .app("ewm-main")
                 .uri(uri)
-                .timestamp(String.valueOf(LocalDateTime.now()))
+                .timestamp(LocalDateTime.now())
                 .ip(ip)
                 .build();
     }
@@ -59,13 +59,13 @@ public class StatServiceImpl implements StatService {
                 .min(LocalDateTime::compareTo);
 
         if (minPublished.isPresent()) {
-            String start = String.valueOf(minPublished.get());
-            String end = String.valueOf(LocalDateTime.now());
+            LocalDateTime start = minPublished.get();
+            LocalDateTime end = LocalDateTime.now();
             List<String> uris = publishedEvents.stream()
                     .map(e -> "/events/" + e.getId())
                     .collect(Collectors.toList());
 
-            List<ViewStatsDto> stats = statClient.getStats(start, end, uris, true);
+            List<ViewStatsDto> stats = statClient.getAllStats(start, end, uris, true);
             stats.forEach(s -> {
                 Long eventId = Long.parseLong(s.getUri().substring(s.getUri().lastIndexOf("/") + 1));
                 views.put(eventId, s.getHits());
