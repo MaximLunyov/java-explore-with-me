@@ -40,6 +40,7 @@ public class PublicEventController {
                                                                     @RequestParam(required = false, defaultValue = "0") @PositiveOrZero Integer from,
                                                                     @RequestParam(required = false, defaultValue = "10") @Positive Integer size,
                                                                     HttpServletRequest request) {
+
         return new ResponseEntity<>(
                 eventService.getAllEventsByPublic(text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort,
                         from, size, request.getRequestURI(), request.getRemoteAddr()), HttpStatus.OK);
