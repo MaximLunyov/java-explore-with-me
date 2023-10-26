@@ -2,7 +2,10 @@ package ru.practicum.ewm.request.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import ru.practicum.ewm.request.model.RequestState;
 
 import java.time.LocalDateTime;
@@ -10,8 +13,7 @@ import java.time.LocalDateTime;
 import static ru.practicum.ewm.utils.Constants.DATE_PATTERN;
 
 
-@Getter
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

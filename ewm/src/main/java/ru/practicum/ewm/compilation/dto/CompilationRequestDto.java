@@ -1,7 +1,10 @@
 package ru.practicum.ewm.compilation.dto;
 
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import ru.practicum.ewm.utils.Marker.OnCreate;
 import ru.practicum.ewm.utils.Marker.OnUpdate;
 
@@ -10,9 +13,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
-//@Builder
+@Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor

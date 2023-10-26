@@ -39,8 +39,8 @@ public class PrivateEventController {
 
     @GetMapping
     public ResponseEntity<List<EventShortDto>> getAllByInitiatorId(@PathVariable Long userId,
-                                                                   @RequestParam(defaultValue = "0", required = false) @PositiveOrZero Integer from,
-                                                                   @RequestParam(defaultValue = "10", required = false) @Positive Integer size) {
+                                                                   @RequestParam(defaultValue = "0") @PositiveOrZero Integer from,
+                                                                   @RequestParam(defaultValue = "10") @Positive Integer size) {
         return new ResponseEntity<>(eventService.getAllByInitiatorId(userId, from, size), HttpStatus.OK);
     }
 

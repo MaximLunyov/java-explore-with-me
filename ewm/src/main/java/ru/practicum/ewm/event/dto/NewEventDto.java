@@ -1,7 +1,10 @@
 package ru.practicum.ewm.event.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import ru.practicum.ewm.event.validator.annotation.EventDateAnnotationValid;
 import ru.practicum.ewm.location.LocationDto;
@@ -19,8 +22,7 @@ import java.time.LocalDateTime;
 import static ru.practicum.ewm.utils.Constants.DATE_PATTERN;
 
 
-@Getter
-@Setter
+@Data
 @ToString
 @SuperBuilder
 @AllArgsConstructor

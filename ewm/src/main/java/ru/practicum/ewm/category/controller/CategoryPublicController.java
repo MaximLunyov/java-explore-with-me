@@ -27,8 +27,8 @@ public class CategoryPublicController {
 
     @GetMapping
     public ResponseEntity<List<CategoryDto>> getAll(
-            @RequestParam(defaultValue = "0", required = false) @PositiveOrZero Integer from,
-            @RequestParam(defaultValue = "10", required = false) @Positive Integer size) {
+            @RequestParam(defaultValue = "0") @PositiveOrZero Integer from,
+            @RequestParam(defaultValue = "10") @Positive Integer size) {
         return new ResponseEntity<>(categoryService.getAll(from, size), HttpStatus.OK);
     }
 

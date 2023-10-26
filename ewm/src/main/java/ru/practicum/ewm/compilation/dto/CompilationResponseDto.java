@@ -6,8 +6,7 @@ import ru.practicum.ewm.event.dto.EventShortDto;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @Builder
 @ToString
 @AllArgsConstructor

@@ -35,7 +35,7 @@ public class StatsController {
             @RequestParam("start") @DateTimeFormat(pattern = DATE_PATTERN) LocalDateTime start,
             @RequestParam("end") @DateTimeFormat(pattern = DATE_PATTERN) LocalDateTime end,
             @RequestParam(value = "uris", required = false) List<String> uris,
-            @RequestParam(value = "unique", defaultValue = "false", required = false) boolean unique) {
+            @RequestParam(value = "unique", defaultValue = "false") boolean unique) {
         log.info("Получен GET запрос по эндпоинту /stats на получение статистики по посещениям.");
         return new ResponseEntity<>(service.getHits(start, end, uris, unique), HttpStatus.OK);
     }
