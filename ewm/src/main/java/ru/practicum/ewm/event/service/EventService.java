@@ -1,5 +1,6 @@
 package ru.practicum.ewm.event.service;
 
+import ru.practicum.ewm.event.SearchEventParams;
 import ru.practicum.ewm.event.dto.EventFullDto;
 import ru.practicum.ewm.event.dto.EventShortDto;
 import ru.practicum.ewm.event.dto.NewEventDto;
@@ -27,8 +28,6 @@ public interface EventService {
 
     EventFullDto getEventByPublic(Long eventId, String uri, String ip);
 
-    List<EventShortDto> getAllEventsByPublic(String text, List<Long> categories, Boolean paid, LocalDateTime rangeStart,
-                                             LocalDateTime rangeEnd, Boolean onlyAvailable, EventSort sort, Integer from,
-                                             Integer size, String uri, String ip);
+    List<EventShortDto> getAllEventsByPublic(SearchEventParams searchEventParams, String uri, String ip);
 
 }

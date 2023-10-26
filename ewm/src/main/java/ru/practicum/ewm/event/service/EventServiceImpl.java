@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ewm.category.Category;
 import ru.practicum.ewm.category.CategoryRepository;
+import ru.practicum.ewm.event.SearchEventParams;
 import ru.practicum.ewm.event.dto.*;
 import ru.practicum.ewm.event.model.Event;
 import ru.practicum.ewm.event.model.EventSort;
@@ -190,11 +191,16 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<EventShortDto> getAllEventsByPublic(String text, List<Long> categories, Boolean paid,
-                                                    LocalDateTime rangeStart,
-                                                    LocalDateTime rangeEnd, Boolean onlyAvailable, EventSort sort, Integer from,
-                                                    Integer size, String uri, String ip) {
-
+    public List<EventShortDto> getAllEventsByPublic(SearchEventParams searchEventParams, String uri, String ip) {
+        String text = searchEventParams.getText();
+        List<Long> categories = searchEventParams.getCategories();
+        Boolean paid = searchEventParams.getPaid();
+        LocalDateTime rangeStart = searchEventParams.getRangeStart();
+        LocalDateTime rangeEnd = searchEventParams.getRangeEnd();
+        Boolean onlyAvailable = searchEventParams.getOnlyAvailable();
+        EventSort sort = searchEventParams.getSort();
+        Integer from = searchEventParams.getFrom();
+        Integer size = searchEventParams.getSize();
         startTimeExist(rangeStart, rangeEnd);
 
         List<Event> events = eventRepository.findEventsByPublic(text, categories, paid, rangeStart, rangeEnd, from,
