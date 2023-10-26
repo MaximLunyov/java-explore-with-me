@@ -40,10 +40,10 @@ public class PublicEventController {
                                                                     @RequestParam(required = false) Boolean paid,
                                                                     @RequestParam(required = false) @DateTimeFormat(pattern = DATE_PATTERN) LocalDateTime rangeStart,
                                                                     @RequestParam(required = false) @DateTimeFormat(pattern = DATE_PATTERN) LocalDateTime rangeEnd,
-                                                                    @RequestParam(defaultValue = "false") Boolean onlyAvailable,
+                                                                    @RequestParam(required = false, defaultValue = "false") Boolean onlyAvailable,
                                                                     @RequestParam(required = false) EventSort sort,
-                                                                    @RequestParam(defaultValue = "0") @PositiveOrZero Integer from,
-                                                                    @RequestParam(defaultValue = "10") @Positive Integer size,
+                                                                    @RequestParam(required = false, defaultValue = "0") @PositiveOrZero Integer from,
+                                                                    @RequestParam(required = false, defaultValue = "10") @Positive Integer size,
                                                                     HttpServletRequest request) {
         return new ResponseEntity<>(
                 eventService.getAllEventsByPublic(text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort,

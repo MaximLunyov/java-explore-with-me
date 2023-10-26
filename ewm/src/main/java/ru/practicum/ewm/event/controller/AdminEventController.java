@@ -40,8 +40,8 @@ public class AdminEventController {
                                                                   @RequestParam(required = false) List<Long> categories,
                                                                   @RequestParam(required = false) @DateTimeFormat(pattern = DATE_PATTERN) LocalDateTime rangeStart,
                                                                   @RequestParam(required = false) @DateTimeFormat(pattern = DATE_PATTERN) LocalDateTime rangeEnd,
-                                                                  @RequestParam(defaultValue = "0") @PositiveOrZero Integer from,
-                                                                  @RequestParam(defaultValue = "10") @Positive Integer size) {
+                                                                  @RequestParam(required = false, defaultValue = "0") @PositiveOrZero Integer from,
+                                                                  @RequestParam(required = false, defaultValue = "10") @Positive Integer size) {
         return new ResponseEntity<>(
                 eventService.getAllEventsByAdmin(users, states, categories, rangeStart, rangeEnd, from, size),
                 HttpStatus.OK);
